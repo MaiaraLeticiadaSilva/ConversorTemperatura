@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="./style.css" rel="stylesheet"/>
+    <title>Document</title>
+</head>
+<header>
+    <h1>Conversor de Temperatura</h1>
+</header>
+<body>
+    <div>
+            <div id="form">
+                <form>
+                    <div>
+                        <label>Insira a temperatura:</label>
+                    <div>
+                        <input type="number" name="temp" id="temp"/>
+                    </div>
+                    </div>
+                    <div>
+                        <label for="temp">Escolha o tipo de temperatura:</label>
+                        <div>
+                            <select id="tipotemp" name="tipotemp">
+                                <option value="C">Celsius</option>
+                                <option value="F">Fahrenheit</option>
+                                <option value="K">Kelvin</option>
+                                <option value="R">Rankine</option>
+                            </select>
+                        </div>
+                    </div>
+                        <div>
+                            <input type="submit" name="Converter" value="Converter"/>
+                            
+                            <input type="reset" value="Limpar">
+                        </div>
+                    </form>
+            </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th >
+                    °C
+                </th>
+                <th >
+                    °F
+                </th>
+                <th >
+                    K
+                </th>
+                <th >
+                    R
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        
+        </tbody>
+    </table>
+
+    <script>
+            let form=document.querySelector("form")
+            let tbody=document.querySelector("tbody")
+            form.onsubmit=function(){
+                let temperatura=document.querySelector("#temp").value
+                let tipo=document.querySelector("#tipotemp").value
+                let cel=""
+                let fah=""
+                let kelv=""
+                let rank=""
+
+                temperatura=parseFloat(temperatura)
+                if(tipo=="C"){
+                    cel=temperatura
+                    fah=(temperatura*1.8)+32
+                    kelv=temperatura+273
+                    rank=(temperatura*1.8)+491.67
+                }
+                else if(tipo=="F"){
+                    fah=temperatura
+                    cel=(temperatura-32)/1.8
+                    kelv=(temperatura-32)*5/9+273
+                    rank=temperatura*459.67
+                }
+                else if(tipo=="K"){
+                    kelv=temperatura
+                    fah=(temperatura-273)*1.8+32
+                    cel=temperatura-273
+                    rank=((temperatura-273.15)*1.8)+491.67
+                }
+                else if(tipo=="R"){
+                    rank=temperatura
+                    fah=temperatura-459.67
+                    kelv=((temperatura-491.67)/1.8)+273.15
+                    cel=(temperatura-491.67)/1.8
+                }
+
+                let tr=document.createElement("tr")
+                let tdC=document.createElement("td")
+                let txC=document.createTextNode(cel)
+                tdC.append(txC)
+                tr.append(tdC)
+
+                let tdF=document.createElement("td")
+                let txF=document.createTextNode(fah)
+                tdF.append(txF)
+                tr.append(tdF)
+
+                let tdK=document.createElement("td")
+                let txK=document.createTextNode(kelv)
+                tdK.append(txK)
+                tr.append(tdK)
+
+                let tdR=document.createElement("td")
+                let txR=document.createTextNode(rank)
+                tdR.append(txR)
+                tr.append(tdR)
+
+            tbody.append(tr)
+
+            return false
+            }
+    </script>
+</body>
+</html>
