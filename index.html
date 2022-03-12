@@ -16,12 +16,12 @@
                 <form>
                     <div>
                         <label>Insira a temperatura:</label>
-                    <div>
+                    <div id="insira">
                         <input type="number" name="temp" id="temp"/>
                     </div>
                     </div>
-                    <div>
-                        <label for="temp">Escolha o tipo de temperatura:</label>
+                    <div id="escolha">
+                        <label  for="temp">Escolha o tipo de temperatura:</label>
                         <div>
                             <select id="tipotemp" name="tipotemp">
                                 <option value="C">Celsius</option>
@@ -31,35 +31,41 @@
                             </select>
                         </div>
                     </div>
-                        <div>
-                            <input type="submit" name="Converter" value="Converter"/>
+                        <div id="botoes">
+                            <input class="btn" type="submit" name="Converter" value="Converter"/>
                             
-                            <input type="reset" value="Limpar">
+                            <input class="btn" type="reset" value="Limpar">
                         </div>
                     </form>
             </div>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th >
-                    °C
-                </th>
-                <th >
-                    °F
-                </th>
-                <th >
-                    K
-                </th>
-                <th >
-                    R
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-        
-        </tbody>
-    </table>
+    <div id="h3div">
+        <h3>CONVERSÕES</h3>
+    </div>
+    <div id="divtab">
+        <table>
+            <thead>
+                <tr>
+                    <th >
+                        °C
+                    </th>
+                    <th >
+                        °F
+                    </th>
+                    <th >
+                        K
+                    </th>
+                    <th >
+                        R
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                    
+            </tbody>
+        </table>
+    </div>
+    
 
     <script>
             let form=document.querySelector("form")
